@@ -1,0 +1,29 @@
+version: '4.0'
+services:
+    db:
+        image: postgres:17.4
+        restart: always
+        ports:
+        - "${POSTGRES_PORT:-5432}:5432"
+        container_name: patient-db
+        user: postgres
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_DB: hms-patient
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready", "-U", "postgres"]
+            interval: 1s
+            timeout: 5s
+            retries: 10
+        volumes:
+            - pgdata-db1:/var/lib/postgresql/data 
+
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - ${ADMINER_PORT:-8080}:8080
+
+volumes:
+    pgdata-db1:
