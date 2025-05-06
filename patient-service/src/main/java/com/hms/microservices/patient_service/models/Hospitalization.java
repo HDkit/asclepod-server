@@ -1,7 +1,6 @@
 package com.hms.microservices.patient_service.models;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -36,10 +35,10 @@ public class Hospitalization {
     private Patient patient;
 
     @Column(name = "adm_date", nullable = false)
-    private LocalDate admissionDate;
+    private Instant admissionTime;
 
     @Column(name = "dis_date")
-    private LocalDate dischargeDate;
+    private Instant dischargeTime;
 
     @Column(name = "adm_reason", nullable = false)
     private String admissionReason;
@@ -49,5 +48,5 @@ public class Hospitalization {
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 }

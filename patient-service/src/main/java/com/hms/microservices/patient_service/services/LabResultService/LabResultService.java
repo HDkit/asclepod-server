@@ -1,4 +1,4 @@
-package com.hms.microservices.patient_service.service.LabResultService;
+package com.hms.microservices.patient_service.services.LabResultService;
 
 import java.util.UUID;
 
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.hms.microservices.patient_service.models.LabResult;
 import com.hms.microservices.patient_service.repositories.LabResultRepo;
-import com.hms.microservices.patient_service.service.LabResultService.factory.LabResultStratFactory;
-import com.hms.microservices.patient_service.service.LabResultService.strategy.LabResultStrategy;
+import com.hms.microservices.patient_service.services.LabResultService.factory.LabResultStratFactory;
+import com.hms.microservices.patient_service.services.LabResultService.strategy.LabResultStrategy;
 
 @Service
 public class LabResultService {
