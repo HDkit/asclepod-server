@@ -45,7 +45,7 @@ public class PatientInfoService {
     }
 
     // delete patient by id, only mark the deleted field as true
-    public PatientInfoResponseDTO deletePatient(UUID id) {
+    public PatientInfoResponseDTO deletePatient(UUID id) throws PatientNotFoundError {
         Patient patient = patientRepo.findById(id).orElseThrow(() -> new PatientNotFoundError(id));
         List<ContactInfo> contactInfos = contactInfoRepo.findByPatient_Id(id);
         patient.setDeleted(true);
@@ -85,7 +85,8 @@ public class PatientInfoService {
 
     // update patient info by id
     @Transactional
-    public PatientInfoResponseDTO updatePatient(UUID id, PatientInfoRequestDTO patientInfoRequestDTO) {
+    public PatientInfoResponseDTO updatePatient(UUID id, PatientInfoRequestDTO patientInfoRequestDTO)
+            throws PatientNotFoundError {
         Patient patient = patientRepo.findById(id).orElseThrow(() -> new PatientNotFoundError(id));
         patientInfoResponseMapper.updatePatientFromDTO(patientInfoRequestDTO, patient);
         patient.setId(id);

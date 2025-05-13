@@ -5,9 +5,14 @@ import java.util.UUID;
 
 import com.hms.microservices.patient_service.common.dto.MedicalInfoResponseDTO;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class SurgeryResponseDTO extends MedicalInfoResponseDTO {
     UUID id;
-    String type;
+    String surgeryType;
     String note;
     Instant scheduledTime;
     Instant startTime;
